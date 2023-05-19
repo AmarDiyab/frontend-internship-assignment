@@ -1,6 +1,18 @@
-<div *ngIf="allBooks.length > 0">
-  <front-end-internship-assignment-table-view
-  [booksList]="allBooks"
-  [subjectName]="subjectName"
-  ></front-end-internship-assignment-table-view>
+<div *ngIf="isLoading; else loadedContent" class="spinner-container">
+  <div class="spinner"></div>
 </div>
+<ng-template #loadedContent>
+  <div class="back-button">
+    <a routerLink="/">
+      <div class="container">
+        <span class="font-bold text-lg" style="color: black; font-weight: bold;">Back</span>
+      </div>
+    </a>
+  </div>
+  <div *ngIf="allBooks.length > 0">
+    <front-end-internship-assignment-table-view
+      [booksList]="allBooks"
+      [subjectName]="subjectName"
+    ></front-end-internship-assignment-table-view>
+  </div>
+</ng-template>
